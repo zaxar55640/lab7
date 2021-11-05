@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+
+enum Car {
+    Light,
+    Truck,
+    Bus,
+    Sport
+};
+
+struct Circle {
+    double r;
+};
+double circleLength(struct Circle *c) {
+    return 2 * 3.14 * c->r;
+}
+
+union Keyboard {
+    int number;
+    struct {
+        unsigned int numLock:1;
+        unsigned int capsLock:1;
+        unsigned int scrollLock:1;
+    } state;
+};
+
+
+
+
+
+int main() {
+
+    enum Car v;
+    v = Bus;
+    printf("Car type: %d\n", v);
+
+
+    struct Circle example;
+    example.r = 1;
+    printf("Circle length: %lf\t", circleLength(&example));
+
+
+    union Keyboard example1;
+    printf("Enter keyboard state:");
+    scanf("%x", &example1.number);
+    printf("State: %d, %d, %d", example1.state.capsLock, example1.state.numLock, example1.state.scrollLock);
+
+    return 0;
+}
